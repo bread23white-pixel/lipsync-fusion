@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LipSync Fusion - AI Lip-Sync Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎬 LipSync Fusion</h1>
+            <p>Perfect Lip-Sync with Emotions & Body Movement</p>
+        </header>
+
+        <main class="main">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <h2>Step 1: Upload Files</h2>
+                
+                <div class="upload-area">
+                    <div class="upload-input">
+                        <label for="media-input" class="upload-label">
+                            <div class="upload-icon">📸</div>
+                            <span>Upload Photo/Video</span>
+                            <input type="file" id="media-input" accept="image/*,video/*" hidden>
+                        </label>
+                        <p id="media-name" class="file-name"></p>
+                    </div>
+
+                    <div class="upload-input">
+                        <label for="audio-input" class="upload-label">
+                            <div class="upload-icon">🎵</div>
+                            <span>Upload Audio</span>
+                            <input type="file" id="audio-input" accept="audio/*" hidden>
+                        </label>
+                        <p id="audio-name" class="file-name"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Configuration Section -->
+            <section class="config-section">
+                <h2>Step 2: Configure</h2>
+                
+                <div class="config-grid">
+                    <div class="config-item">
+                        <label for="model-select">Model</label>
+                        <select id="model-select">
+                            <option value="auto">Auto (Recommended)</option>
+                            <option value="musetalk">MuseTalk (Fast)</option>
+                            <option value="wav2lip">Wav2Lip (Accurate)</option>
+                            <option value="latentsync">LatentSync (Quality)</option>
+                        </select>
+                    </div>
+
+                    <div class="config-item">
+                        <label for="emotion-select">Emotion</label>
+                        <select id="emotion-select">
+                            <option value="neutral">Neutral</option>
+                            <option value="happy">Happy</option>
+                            <option value="sad">Sad</option>
+                            <option value="surprised">Surprised</option>
+                            <option value="angry">Angry</option>
+                        </select>
+                    </div>
+
+                    <div class="config-item">
+                        <label for="motion-slider">Motion Intensity</label>
+                        <div class="slider-container">
+                            <input type="range" id="motion-slider" min="0" max="100" value="70">
+                            <span id="motion-value">70%</span>
+                        </div>
+                    </div>
+
+                    <div class="config-item">
+                        <label for="accuracy-select">Accuracy</label>
+                        <select id="accuracy-select">
+                            <option value="fast">Fast</option>
+                            <option value="balanced" selected>Balanced</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Generate Section -->
+            <section class="generate-section">
+                <button id="generate-btn" class="btn btn-primary" disabled>
+                    🚀 Generate
+                </button>
+                
+                <div id="progress-container" class="progress-container" style="display: none;">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                    <p id="progress-text">Processing...</p>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="results-section" class="results-section" style="display: none;">
+                <h2>Results</h2>
+                <video id="preview-video" controls style="max-width: 100%; border-radius: 8px;"></video>
+                <button id="download-btn" class="btn btn-success">⬇️ Download MP4</button>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>🌍 Free & Open Source | Combining MuseTalk, Wav2Lip, SadTalker, LatentSync & FaceFusion</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
